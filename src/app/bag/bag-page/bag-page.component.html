@@ -1,0 +1,19 @@
+<div *ngIf="products$ | async as products" class="container">
+  <div class="cart">
+    <h2>Your bag</h2>
+    <div class="cart-items">
+      <div class="cart-item" *ngFor="let product of products">
+        <img class="item-image" width="200" [src]="product.image ? url + product.image : url + 'No_Image_Available.jpg'" alt={{product.name}}>
+        <div class="item-details">
+          <h3>{{ product.name }}</h3>
+          <p class="item-description">{{ product.description }}</p>
+          <p class="item-price">{{ product.price | currency }}</p>
+        </div>
+      </div>
+    <div>
+      Total: {{total(products)| currency}}
+    </div>
+    </div>
+    <button mat-raised-button color="primary" (click)="checkout(products)">Checkout</button>
+  </div>
+</div>

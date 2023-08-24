@@ -1,0 +1,26 @@
+<ng-container *ngIf="product$ | async as product">
+  <div class="edit-container">
+    <button mat-button [matMenuTriggerFor]="edit" #clickMenuTrigger="matMenuTrigger" class="edif-button" matTooltip="Click to open edit menu">
+      Edit product
+      <mat-icon>keyboard_arrow_down</mat-icon>
+    </button>
+  </div>
+  <div class="product-detail-container">
+
+    <div class="product-image-container">
+      <img width="200" [src]="product.image ? url + product.image : url + 'No_Image_Available.jpg'"
+        alt={{product.name}}>
+    </div>
+    <div class="product-info-container">
+      <h1 class="product-title">{{product.name}}</h1>
+      <p class="product-description">{{product.description}}</p>
+      <p class="product-price">{{product.price | currency}}</p>
+      <button (click)="addToBag(product.id!)" class="add-to-cart-button">Add to Cart</button>
+    </div>
+  </div>
+  <mat-menu #edit="matMenu" class="wider-menu">
+    <app-edit (click)="$event.stopPropagation()" [product]="product" (closeMenu)="closeMenu()"></app-edit>
+  </mat-menu>
+</ng-container>
+
+<app-loader *ngIf="isLoading$ | async"></app-loader>

@@ -1,0 +1,6 @@
+<mat-toolbar color="primary">
+  <mat-toolbar-row>
+    <span class="fill-space"></span>
+    <a mat-button *ngFor="let link of links" href="{{link.link}}">{{link.text}}</a>
+  </mat-toolbar-row>
+</mat-toolbar>

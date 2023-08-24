@@ -1,0 +1,63 @@
+<div class="container">
+
+  <div class="form">
+    <form [formGroup]="formGroup" class="login-form" (ngSubmit)="onSubmit()">
+      <div class="login-form__title">
+        <h1 *ngIf="registered">Log in</h1>
+        <h1 *ngIf="!registered">Create Account</h1>
+      </div>
+      <div class="form__warning">
+        <mat-card *ngIf="loginAgain$ | async">
+          <mat-card-content>
+            Please login to your account to get to the products page
+          </mat-card-content>
+        </mat-card>
+      </div>
+      <app-text-input [value]="formGroup.value.email" [label]="'Email'" formControlName="email">
+        <ng-container *ngIf="(formGroup.get('email')!.dirty || formGroup.get('email')!.touched)">
+          <mat-error *ngIf="formGroup.get('email')!.errors?.['required']">Email is required.</mat-error>
+          <mat-error *ngIf="formGroup.get('email')!.errors?.['email']">Email must be valid.</mat-error>
+        </ng-container>
+
+      </app-text-input>
+
+      <hr *ngIf="!registered">
+      <app-text-input *ngIf="!registered" [value]="formGroup.value.name" [label]="'Name'"
+        formControlName="name">
+        <ng-container *ngIf="(formGroup.get('name')!.dirty || formGroup.get('name')!.touched)">
+          <mat-error *ngIf="formGroup.get('name')!.errors?.['required']">Name is required.</mat-error>
+        </ng-container>
+      </app-text-input>
+
+      <hr>
+
+      <app-text-input [value]="formGroup.value.password" [label]="'Password'" [type]="'password'"
+        formControlName="password">
+
+        <ng-container *ngIf="(formGroup.get('password')!.dirty || formGroup.get('password')!.touched)">
+          <mat-error *ngIf="formGroup.get('password')!.errors?.['required']">Password is required.</mat-error>
+          <mat-error
+            *ngIf="formGroup.get('password')!.value.length < 6 && formGroup.get('password')!.value.length > 0">Password
+            must not be shorter then
+            <strong>6</strong> symbols, now it is
+            <strong>{{formGroup.get('password')!.value.length}}</strong></mat-error>
+        </ng-container>
+
+      </app-text-input>
+
+      <div class="login-form__input-control">
+        <button *ngIf="registered" mat-raised-button color="primary" [disabled]="formGroup.invalid || submitted"
+          class="login-form__submit">Log in</button>
+        <button *ngIf="!registered" mat-raised-button color="primary" [disabled]="formGroup.invalid || submitted"
+          class="login-form__submit">Sing Up</button>
+      </div>
+      <div class="toggle">
+        <span *ngIf="registered" class="text">If you haven't account please</span>
+        <button *ngIf="registered" mat-raised-button (click)="changeRegistered(false)">Sing Up</button>
+        <span *ngIf="!registered" class="text">If you have account please</span>
+        <button *ngIf="!registered" mat-raised-button (click)="changeRegistered(true)">Sign In</button>
+      </div>
+      <app-loader *ngIf="isLoading$ | async"></app-loader>
+    </form>
+  </div>
+</div>

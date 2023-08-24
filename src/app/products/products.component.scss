@@ -1,0 +1,130 @@
+.product-container {
+  display: flex;
+  flex-wrap: wrap;
+  padding: 20px;
+}
+
+.product {
+  width: calc(33.33% - 20px);
+  margin-bottom: 20px;
+  padding: 10px;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  transition: transform 0.3s ease;
+}
+
+.product:hover {
+  transform: translateY(-5px);
+}
+
+
+.products-message {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  margin-top: 50px;
+  font-size: medium;
+  justify-content: center;
+  align-items: center;
+
+  >button {
+    border-bottom: 2px solid black;
+    border-bottom-left-radius: 0;
+    border-bottom-right-radius: 0;
+  }
+}
+
+.filters {
+  padding: 10px;
+}
+
+.slider-container {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 280px;
+}
+
+.slider {
+  width: 230px;
+}
+
+.price-inputs {
+  display: flex;
+  align-items: center;
+  padding: 10px;
+
+  >input {
+    width: 70px;
+    margin: 15px;
+    border-radius: 10px;
+    border: 1px solid rgb(117, 227, 241);
+  }
+}
+
+.price-buttons {
+
+  >button {
+    margin: 0 27px;
+  }
+}
+
+.filters-message {
+  margin: 0 auto;
+  width: 210px;
+  margin-bottom: 10px;
+  color: rgb(26, 49, 255);
+
+  >div {
+    text-align: center;
+  }
+}
+
+.sorting {
+  padding: 5px;
+}
+
+.selected {
+  border: 1px solid rgb(175, 234, 252);
+  background-color: rgb(240, 253, 255);
+  border-radius: 8px;
+}
+
+.options-buttons-container {
+  display: flex;
+  justify-content: center;
+}
+
+.options-buttons {
+  width: 900px;
+  margin: 10px 0;
+  border: 1px solid rgb(0, 0, 0);
+  border-radius: 6px;
+
+  >button {
+    width: 33%;
+  }
+}
+
+.checkbox-container {
+  width: 300px;
+}
+
+.checkbox {
+  display: block;
+}
+
+.add-container{
+  display: flex;
+  justify-content: center;
+  width: 100%
+}
+
+.add-menu{
+  width: 400px;
+}
+
+@media (max-width: 768px) {
+  .options-buttons {
+    width: 100%;
+  }
+}

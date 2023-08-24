@@ -1,0 +1,16 @@
+<mat-toolbar color="primary">
+  <mat-toolbar-row>
+    <button mat-icon-button [routerLink]="['/products']" matTooltip="Home">
+      <mat-icon>home</mat-icon>
+    </button>
+    <span [routerLink]="['/products']" class="title">Mega shop</span>
+    <span class="fill-space"></span>
+    <div *ngIf="userEmail" [routerLink]="['/profile']" class="email">{{ userEmail }}</div>
+    <button mat-icon-button (click)="openCartDialog()">
+      <mat-icon>shopping_cart</mat-icon>
+    </button>
+    <button mat-icon-button (click)="logout()" matTooltip="Logout">
+      <mat-icon>exit_to_app</mat-icon>
+    </button>
+  </mat-toolbar-row>
+</mat-toolbar>

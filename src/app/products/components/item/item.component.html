@@ -1,0 +1,7 @@
+<div class="item-container">
+  <img width="200" [src]="product.image ? url + product.image : url + 'No_Image_Available.jpg'" alt={{product.name}}>
+  <h3 class="product-title">{{product.name}}</h3>
+  <p class="product-price">{{product.price | currency}}</p>
+  <mat-icon (click)="$event.stopPropagation()" (click)="deleteProduct()" matTooltip="Delete">delete</mat-icon>
+  <button (click)="addToBag($event)" mat-raised-button color="primary" class="add-to-cart-button">Add to Cart</button>
+</div>

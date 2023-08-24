@@ -1,0 +1,43 @@
+.toggle {
+  margin-top: 20px;
+  left: 70%;
+  padding: 10px;
+
+  >span {
+    margin-right: 10px;
+  }
+}
+
+.form {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-top: 5%;
+}
+
+.login-form {
+  width: 350px;
+}
+
+.login-form__input-control {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+}
+
+.login-form__title {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-bottom: 20px;
+}
+
+.login-form__submit {
+  width: 150px;
+}
+
+.form__warning {
+  margin-bottom: 20px;
+  color: red;
+}

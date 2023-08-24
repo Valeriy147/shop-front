@@ -1,0 +1,61 @@
+.chat-container {
+  max-width: 600px;
+  margin: 50px auto;
+  display: flex;
+  flex-direction: column;
+}
+
+.messages {
+  margin-bottom: 20px;
+
+  .message {
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    margin-bottom: 10px;
+
+    .sender {
+      word-wrap: break-word;
+      font-weight: bold;
+      color: #3498db;
+      margin-bottom: 5px;
+    }
+
+    .text {
+      word-wrap: break-word;
+      color: #333;
+    }
+  }
+}
+
+.input-container {
+  display: flex;
+  align-items: center;
+  padding: 10px;
+
+  .message-input {
+    flex: 1;
+    margin-right: 10px;
+  }
+
+  .send-button {
+    margin-left: 10px;
+  }
+}
+
+.delete-card {
+  margin: 10px 0;
+  cursor: pointer;
+  &:hover{
+    transform: translateY(-2px);
+  }
+}
+
+.delete-container{
+  padding: 5px;
+  display: flex;
+  align-items: center;
+  >div{
+    margin-left: 10px;
+  }
+}

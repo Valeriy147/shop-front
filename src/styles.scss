@@ -1,0 +1,49 @@
+/* You can add global styles to this file, and also import other style files */
+
+html, body { height: 100%; }
+body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
+
+
+.popup-success {
+  position: fixed;
+  text-align: center;
+  padding: 10px 0;
+  z-index: 1000;
+  top: 15%;
+  left: 80%;
+  width: 18%;
+  min-height: 50px;
+  border-radius: 12px;
+  background-color: rgb(197, 253, 183);
+}
+
+.popup-error {
+  position: fixed;
+  text-align: center;
+  padding: 10px 0;
+  z-index: 1000;
+  top: 15%;
+  left: 80%;
+  width: 18%;
+  min-height: 50px;
+  border-radius: 12px;
+  color: white;
+  background-color: rgb(248, 191, 169);
+}
+
+.mat-mdc-menu-panel{
+  max-width: none !important;
+}
+
+@media(max-width: 816px) {
+  .popup-success {
+    min-height: 40px;
+    font-size: 12px;
+  }
+
+  .popup-error {
+    min-height: 40px;
+    font-size: 12px;
+
+  }
+}

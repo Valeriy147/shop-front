@@ -1,0 +1,41 @@
+.container {
+  margin-bottom: 10px;
+}
+
+.profile-info {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+  height: 100px;
+  background-color: rgb(233, 231, 231);
+}
+
+.name {
+  font-size: large;
+  margin: 0 5px;
+}
+
+.email {
+  font-size: small;
+}
+
+.name-container {
+  display: flex;
+  justify-content: center;
+}
+
+.title {
+  text-align: center;
+  margin: 10px 0;
+}
+
+.name-input {
+  margin-top: 40px;
+  width: 200px
+}
+
+.submit-container {
+  display: flex;
+  justify-content: center;
+}

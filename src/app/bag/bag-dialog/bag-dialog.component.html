@@ -1,0 +1,26 @@
+<div *ngIf="products$ | async as products">
+
+  <mat-dialog-content>
+    <h2>Your bag</h2>
+
+    <div *ngIf="products.length">
+      <div class="cart-item" *ngFor="let product of products">
+        <img width="200" [src]="product.image ? url + product.image : url + 'No_Image_Available.jpg'"
+          alt={{product.name}}>
+        <div class="item-details">
+          <h3>{{ product.name }}</h3>
+          <p>{{ product.description }}</p>
+          <p class="price">{{ product.price | currency }}</p>
+        </div>
+      </div>
+    </div>
+    <div *ngIf="!products.length">
+      Your bag is empty
+    </div>
+
+  </mat-dialog-content>
+  <mat-dialog-actions (align)="'end'">
+    <button mat-button mat-dialog-close>Close</button>
+    <button mat-button (click)="goToCart()">Go to more details bag</button>
+  </mat-dialog-actions>
+</div>

@@ -1,0 +1,100 @@
+<div *ngIf="products$ | async as products" class="products-container">
+  <ng-container *ngIf="products.length; else noProducts">
+    <div class="add-container">
+      <button mat-button [matMenuTriggerFor]="add" #clickMenuTrigger="matMenuTrigger" class="add-menu"
+        matTooltip="Click to open creating menu">
+        Add new product
+        <mat-icon>add_circle</mat-icon>
+      </button>
+    </div>
+    <div class="options-buttons-container">
+      <div class="options-buttons">
+        <button mat-button [matMenuTriggerFor]="sortingMenu" #clickMenuTrigger="matMenuTrigger"
+          matTooltip="Click to open sorting menu">
+          Sort by {{sorting}}
+          <mat-icon>keyboard_arrow_down</mat-icon>
+        </button>
+        <button mat-button [matMenuTriggerFor]="filtersMenu" #clickMenuTrigger="matMenuTrigger"
+          matTooltip="Click to open filters">
+          Filters
+          <mat-icon>keyboard_arrow_down</mat-icon>
+        </button>
+        <button mat-button [matMenuTriggerFor]="categoryMenu" #clickMenuTrigger="matMenuTrigger"
+          matTooltip="Click to open filters">
+          Categories
+          <mat-icon>keyboard_arrow_down</mat-icon>
+        </button>
+      </div>
+    </div>
+    <div class="product-container">
+      <app-item [product]="product" class="product"
+        *ngFor="let product of (products | sortingProducts:sorting | priceFiler:filters | categories:categories)"
+        [routerLink]="['../product/' + product.id]">
+      </app-item>
+    </div>
+  </ng-container>
+</div>
+
+<app-loader *ngIf="isLoading$ | async"></app-loader>
+
+<ng-template #noProducts>
+  <div class="products-message">
+    <span>You have no products, but you can</span>
+    <button mat-button [matMenuTriggerFor]="add" #clickMenuTrigger="matMenuTrigger"
+      matTooltip="Click to open creating menu">
+      Add new product
+      <mat-icon>add_circle</mat-icon>
+    </button>
+  </div>
+</ng-template>
+
+<mat-menu #add="matMenu">
+  <app-edit (click)="$event.stopPropagation()" (closeMenu)="closeMenu()"></app-edit>
+</mat-menu>
+
+<mat-menu #sortingMenu="matMenu">
+  <div *ngFor="let sortingParam of sortingParams" mat-menu-item (click)="sorting = sortingParam">
+    <div [ngClass]="{'selected': sortingParam === sorting}" class="sorting">{{sortingParam}}
+    </div>
+  </div>
+</mat-menu>
+
+<mat-menu #filtersMenu="matMenu" class="filters">
+  <form [formGroup]="priceForm" (ngSubmit)="submitPriceForm()" (click)="$event.stopPropagation()">
+    <div class="price-inputs">
+      <span>Price</span>
+      <input type="number" [value]="priceForm.value.min" formControlName="min">
+      <span>-</span>
+      <input type="number" [value]="priceForm.value.max" formControlName="max">
+    </div>
+    <div class="slider-container">
+      <mat-slider min="0" max="10000" class="slider">
+        <input [value]="priceForm.value.min" matSliderStartThumb formControlName="min">
+        <input [value]="priceForm.value.max" matSliderEndThumb formControlName="max">
+      </mat-slider>
+    </div>
+  </form>
+  <div class="filters-message">
+    <div *ngIf="!filters">Filters not applied!</div>
+  </div>
+  <div class="price-buttons">
+    <button mat-raised-button (click)="cancelPrice()" matTooltip="Cancel filters">Cancel</button>
+    <button mat-raised-button color="primary" (click)="submitPriceForm()" matTooltip="Submit filters">Submit</button>
+  </div>
+</mat-menu>
+
+<mat-menu #categoryMenu="matMenu">
+  <div (click)="$event.stopPropagation()" class="checkbox-container">
+    <mat-checkbox class="checkbox" [(ngModel)]="food">food</mat-checkbox>
+  </div>
+  <div (click)="$event.stopPropagation()" class="checkbox-container">
+    <mat-checkbox class="checkbox" [(ngModel)]="cloth">cloth</mat-checkbox>
+  </div>
+  <div (click)="$event.stopPropagation()" class="checkbox-container">
+    <mat-checkbox class="checkbox" [(ngModel)]="gadgets">gadgets</mat-checkbox>
+  </div>
+
+  <div class="price-buttons">
+    <button mat-raised-button color="primary" (click)="submitCategories()" matTooltip="Submit filters">Submit</button>
+  </div>
+</mat-menu>

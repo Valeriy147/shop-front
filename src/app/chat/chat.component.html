@@ -1,0 +1,23 @@
+<div class="chat-container">
+  <mat-card (click)="deleteMess()" class="delete-card">
+    <div class="delete-container">
+      <button mat-tooltip><mat-icon>delete</mat-icon></button>
+      <div>delete all messages</div>
+    </div>
+  </mat-card>
+  <mat-card class="messages">
+    <div class="message" *ngFor="let message of messages">
+      <div class="sender">
+        <span>{{ message.name }}</span>
+        <span> ({{ message.email }})</span>
+      </div>
+      <div class="text">{{ message.message }}</div>
+    </div>
+  </mat-card>
+  <mat-card class="input-container">
+    <mat-form-field class="message-input">
+      <input matInput placeholder="Enter your message..." [(ngModel)]="message"  (keyup.enter)="handleSubmitNewMessage()">
+    </mat-form-field>
+    <button mat-raised-button color="primary" class="send-button" (click)="handleSubmitNewMessage()">Send</button>
+  </mat-card>
+</div>

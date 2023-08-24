@@ -1,0 +1,5 @@
+<mat-form-field class="field-container">
+  <mat-label>{{label}}</mat-label>
+  <input matInput [type]="type" contenteditable [value]="value" (keyup)="onEditorValueChange($event)">
+  <ng-content></ng-content>
+</mat-form-field>

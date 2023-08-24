@@ -1,0 +1,21 @@
+.about-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.about-card {
+  width: 80%;
+  margin: 30px;
+  padding: 20px;
+  background-color: #ffffff;
+
+  .mat-card-header {
+    background-color: #f0f0f0;
+  }
+
+  .mat-card-content {
+    font-size: 16px;
+    line-height: 1.5;
+  }
+}

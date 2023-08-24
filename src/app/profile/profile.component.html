@@ -1,0 +1,23 @@
+<div class="container">
+  <div class="profile-info">
+    <mat-icon>person</mat-icon>
+    <span class="name">{{user.name}}</span>
+    <span class="email">{{user.email}}</span>
+  </div>
+  <div class="name-container">
+    <form [formGroup]="formGroup" class="login-form" (ngSubmit)="onSubmit()">
+
+      <h1 class="title">Change your name</h1>
+      <div class="name-input">
+        <app-text-input [value]="formGroup.value.email" [label]="'Name'" formControlName="name">
+          <ng-container *ngIf="(formGroup.get('name')!.dirty || formGroup.get('name')!.touched)">
+            <mat-error *ngIf="formGroup.get('name')!.errors?.['required']">Email is required.</mat-error>
+          </ng-container>
+        </app-text-input>
+      </div>
+      <div class="submit-container">
+      <button mat-raised-button color="primary" [disabled]="formGroup.invalid">Submit</button>
+      </div>
+    </form>
+  </div>
+</div>
